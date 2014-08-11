@@ -19,6 +19,9 @@
 		221555071992624100D9D7B4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221554EF1992624100D9D7B4 /* UIKit.framework */; };
 		2215550F1992624100D9D7B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2215550D1992624100D9D7B4 /* InfoPlist.strings */; };
 		221555111992624100D9D7B4 /* Bricks___BallsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 221555101992624100D9D7B4 /* Bricks___BallsTests.m */; };
+		2215551D199262CE00D9D7B4 /* BABGameBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2215551C199262CE00D9D7B4 /* BABGameBoardViewController.m */; };
+		221555211993B9EB00D9D7B4 /* BABHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 221555201993B9EB00D9D7B4 /* BABHeaderView.m */; };
+		221555241993FD0200D9D7B4 /* BABLevelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 221555231993FD0200D9D7B4 /* BABLevelData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,12 @@
 		2215550C1992624100D9D7B4 /* Bricks & BallsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bricks & BallsTests-Info.plist"; sourceTree = "<group>"; };
 		2215550E1992624100D9D7B4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		221555101992624100D9D7B4 /* Bricks___BallsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Bricks___BallsTests.m"; sourceTree = "<group>"; };
+		2215551B199262CE00D9D7B4 /* BABGameBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BABGameBoardViewController.h; sourceTree = "<group>"; };
+		2215551C199262CE00D9D7B4 /* BABGameBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BABGameBoardViewController.m; sourceTree = "<group>"; };
+		2215551F1993B9EB00D9D7B4 /* BABHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BABHeaderView.h; sourceTree = "<group>"; };
+		221555201993B9EB00D9D7B4 /* BABHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BABHeaderView.m; sourceTree = "<group>"; };
+		221555221993FD0200D9D7B4 /* BABLevelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BABLevelData.h; sourceTree = "<group>"; };
+		221555231993FD0200D9D7B4 /* BABLevelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BABLevelData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +86,7 @@
 		221554DF1992624100D9D7B4 = {
 			isa = PBXGroup;
 			children = (
+				2215551A199262A000D9D7B4 /* Controllers */,
 				221554F11992624100D9D7B4 /* Bricks & Balls */,
 				2215550A1992624100D9D7B4 /* Bricks & BallsTests */,
 				221554EA1992624100D9D7B4 /* Frameworks */,
@@ -142,6 +152,37 @@
 				2215550D1992624100D9D7B4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2215551A199262A000D9D7B4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2215551B199262CE00D9D7B4 /* BABGameBoardViewController.h */,
+				2215551C199262CE00D9D7B4 /* BABGameBoardViewController.m */,
+				2215551E1993B9AF00D9D7B4 /* Views */,
+			);
+			name = Controllers;
+			path = "Bricks & Balls";
+			sourceTree = "<group>";
+		};
+		2215551E1993B9AF00D9D7B4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2215551F1993B9EB00D9D7B4 /* BABHeaderView.h */,
+				221555201993B9EB00D9D7B4 /* BABHeaderView.m */,
+				22A994D91995071F008236B3 /* Models */,
+				221555221993FD0200D9D7B4 /* BABLevelData.h */,
+				221555231993FD0200D9D7B4 /* BABLevelData.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		22A994D91995071F008236B3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,8 +281,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				221555241993FD0200D9D7B4 /* BABLevelData.m in Sources */,
+				2215551D199262CE00D9D7B4 /* BABGameBoardViewController.m in Sources */,
 				221554FC1992624100D9D7B4 /* BABAppDelegate.m in Sources */,
 				221554F81992624100D9D7B4 /* main.m in Sources */,
+				221555211993B9EB00D9D7B4 /* BABHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +482,7 @@
 				221555161992624100D9D7B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		221555171992624100D9D7B4 /* Build configuration list for PBXNativeTarget "Bricks & BallsTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +491,7 @@
 				221555191992624100D9D7B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
