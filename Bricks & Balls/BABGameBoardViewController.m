@@ -33,9 +33,9 @@
     UIView * paddle;
     UIAttachmentBehavior * attachmentBehavior;
     UIButton * startButton;
-    UIView * powerUp;
-    UICollisionBehavior * powerCBehavior;
-    
+//    UIView * powerUp;
+    UICollisionBehavior * powerUpCollisionBehavior;
+    NSMutableArray * powerUps;
     
     BABHeaderView * headerView;
     
@@ -52,7 +52,7 @@
         [self.view addSubview:headerView];
         
         bricks =[@[]mutableCopy];
-        
+        powerUps= [@[]mutableCopy];
         animator = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
         
         brickItemBehavior= [[UIDynamicItemBehavior alloc] init];
@@ -75,6 +75,12 @@
         collisionBehavior = [[UICollisionBehavior alloc]init];
         
         collisionBehavior.collisionDelegate = self;
+        
+        powerUpCollisionBehavior = [[UICollisionBehavior alloc]init];
+       
+        powerUpCollisionBehavior.collisionDelegate = self;
+        
+        [animator addBehavior:powerUpCollisionBehavior];
         
         
         
@@ -142,12 +148,8 @@
     attachmentBehavior = [[UIAttachmentBehavior alloc]initWithItem:paddle attachedToAnchor:paddle.center];
     
     [animator addBehavior:attachmentBehavior];
-    
-    //      [ballItemBehavior addItem:ball];
-    //    [collisionBehavior addItem:ball];
+
     [brickItemBehavior addItem:paddle];
-    [collisionBehavior addItem:paddle];
-    
     
     //    UIPushBehavior * pushBehavior = [[UIPushBehavior alloc]initWithItems:@[ball] mode:UIPushBehaviorModeInstantaneous];
     //    pushBehavior.pushDirection = CGVectorMake(0.05, -0.05);
@@ -182,6 +184,7 @@
     
 }
 
+
 -(void)displayStartButton
 {
     
@@ -206,9 +209,6 @@
     [startButton addTarget:self action:@selector(startGame) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:startButton];
 }
-
-
-
 
 
 -(void)resetBricks
@@ -321,21 +321,47 @@
     }
     
     
+    for (UIView * powerUp in [powerUps copy])
+    {
+        if ([item1 isEqual:powerUp] || [item2 isEqual: powerUp])
+        {
+            
+            [powerUpCollisionBehavior removeItem: powerUp];
+            [powerUp removeFromSuperview];
+            [powerUps removeObjectIdenticalTo:powerUp];
+            
+            [collisionBehavior removeItem:paddle];
+            
+            CGRect frame = paddle.frame;
+            
+            frame.size.width = arc4random_uniform(120) + 40;
+            paddle.frame = frame;
+            
+            [collisionBehavior addItem:paddle];
+        }
+    }
+    
+    
 }
 
 -(void)powerUpMethod:(UIView *)brick
  {
 
-     powerUp= [[UIView alloc]initWithFrame:CGRectMake(brick.center.x, brick.center.y,20, 20)];
+     UIView * powerUp= [[UIView alloc]initWithFrame:CGRectMake(brick.center.x, brick.center.y,20, 20)];
      
      powerUp.backgroundColor= [UIColor blackColor];
      
      powerUp.layer.cornerRadius = 10;
     
+     
+     
+     
      [self.view addSubview:powerUp];
  
      [gravityBehavior addItem:powerUp];
      
+     [powerUps addObject:powerUp];
+     [powerUpCollisionBehavior addItem:powerUp];
      
      
 
